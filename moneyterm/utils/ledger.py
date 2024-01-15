@@ -271,9 +271,7 @@ class Ledger:
         Returns:
             list[Transaction]: List of transactions
         """
-        tx_list = [
-            tx for tx in self.transactions.values() if tx.account.number == account_number and tx.date.year == year
-        ]
+        tx_list = [tx for tx in self.transactions.values() if tx.account.number == account_number and tx.date.year == year]
         return sorted(tx_list, key=lambda tx: tx.date)
 
     def get_tx_by_month(self, account_number: str, year: int, month: int) -> list[Transaction]:
@@ -315,10 +313,7 @@ class Ledger:
         tx_list = [
             tx
             for tx in self.transactions.values()
-            if tx.account.number == account_number
-            and tx.date.month == month
-            and tx.date.year == year
-            and tx.date.day == day
+            if tx.account.number == account_number and tx.date.month == month and tx.date.year == year and tx.date.day == day
         ]
         return sorted(tx_list, key=lambda tx: tx.date)
 

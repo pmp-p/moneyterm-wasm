@@ -409,9 +409,7 @@ class Labeler(Widget):
         """
         if isinstance(self.selected_label, NoSelection):
             return
-        self.app.push_screen(
-            RenameLabelScreen(self.selected_label, list(self.labels[self.selected_type])), self.rename_label
-        )
+        self.app.push_screen(RenameLabelScreen(self.selected_label, list(self.labels[self.selected_type])), self.rename_label)
 
     def rename_label(self, new_label_name: str) -> None:
         """
@@ -532,9 +530,7 @@ class Labeler(Widget):
         account_select: Select = self.app.query_one("#account_select", expect_type=Select)
         year_select: Select = self.app.query_one("#year_select", expect_type=Select)
         month_select: Select = self.app.query_one("#month_select", expect_type=Select)
-        if any(
-            isinstance(scope_select.value, NoSelection) for scope_select in (account_select, year_select, month_select)
-        ):
+        if any(isinstance(scope_select.value, NoSelection) for scope_select in (account_select, year_select, month_select)):
             self.notify("Account, year, and month must be selected!", title="Error", severity="error", timeout=7)
             return
         transactions = self.ledger.get_tx_by_month(
@@ -704,9 +700,7 @@ class Labeler(Widget):
                 not self.amount_upper_bound_input.value,
             ]
         ):
-            self.notify(
-                "At least one of (Memo, Payee, Amount) must be specified!", title="Error", severity="error", timeout=7
-            )
+            self.notify("At least one of (Memo, Payee, Amount) must be specified!", title="Error", severity="error", timeout=7)
             validated = False
         return validated
 
@@ -735,9 +729,7 @@ class Labeler(Widget):
         self.selected_match_option = None
         if isinstance(self.selected_label, NoSelection):
             return
-        for match_name in sorted(
-            list(self.labels[self.selected_type][self.selected_label].keys()), key=lambda x: x.lower()
-        ):
+        for match_name in sorted(list(self.labels[self.selected_type][self.selected_label].keys()), key=lambda x: x.lower()):
             new_option = Option(match_name, id=match_name)
             self.matches_option_list.add_option(new_option)
         if set_selection and set_selection in self.labels[self.selected_type][self.selected_label]:

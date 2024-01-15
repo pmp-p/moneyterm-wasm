@@ -64,9 +64,7 @@ class AddLabelScreen(ModalScreen):
         """
         new_label_name = self.new_label_input.value
         if new_label_name in self.existing_labels:
-            self.notify(
-                "Label already exists! Labels must be unique across all types.", title="Error", severity="error"
-            )
+            self.notify("Label already exists! Labels must be unique across all types.", title="Error", severity="error")
         elif not new_label_name:
             self.notify("Label name cannot be empty!", title="Error", severity="error")
         else:

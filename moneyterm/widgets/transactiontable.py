@@ -68,11 +68,7 @@ class TransactionTable(DataTable):
         """Update the datatable when month selection changed."""
         self.clear(columns=True)
         self.add_columns_from_labels()
-        if (
-            isinstance(self.account, NoSelection)
-            or isinstance(self.year, NoSelection)
-            or isinstance(self.month, NoSelection)
-        ):
+        if isinstance(self.account, NoSelection) or isinstance(self.year, NoSelection) or isinstance(self.month, NoSelection):
             self.selected_row_key = None
             self.add_row("No account/dates selected.", "", "", "", "", "")
             self.cursor_type = "none"

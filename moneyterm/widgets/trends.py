@@ -27,9 +27,7 @@ from datetime import datetime, timedelta
 
 
 class TrendAnalysis(Widget):
-    def __init__(
-        self, ledger: Ledger, subject: str, start_date: datetime | None = None, end_date: datetime | None = None
-    ) -> None:
+    def __init__(self, ledger: Ledger, subject: str, start_date: datetime | None = None, end_date: datetime | None = None) -> None:
         super().__init__()
         self.ledger = ledger
         self.subject = subject
